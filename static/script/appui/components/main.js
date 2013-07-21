@@ -78,11 +78,6 @@ require.def("davros/appui/components/main",
                     this.appendChildWidget(back);
                     back.appendChildWidget(new Label('BACKLabel', "Back"));
 
-                    controlsLabel = new Label("controlsLabel", "Use the navigation buttons for movement. Use the Select or Enter button to exterminate target");
-                   this.appendChildWidget(controlsLabel);
-
-
-
                     this.addEventListener("beforerender", function (evt) {
                         self._onBeforeRender(evt);
                     });

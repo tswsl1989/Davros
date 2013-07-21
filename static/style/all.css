@@ -20,7 +20,7 @@
 	height: 1px;
 }
 
-#titleLabel, #videoLabel, #controlsLabel {
+#titleLabel {
     display: block;
     text-align: left;
     font-family: sans-serif;
