@@ -16,7 +16,7 @@ require('antie/php/antieframework.php');
 $application_id = "davros";
 $antie_config_path = 'antie/config';
 
-$javascript_cache_busting = true; //Disable to stop messing with urlArgs
+$javascript_cache_busting = false; //Disable to stop messing with urlArgs
 
 // Create an AntieFramework instance
 $antie = new AntieFramework($antie_config_path);

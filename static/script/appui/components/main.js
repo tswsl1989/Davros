@@ -20,7 +20,8 @@ require.def("davros/appui/components/main",
                     this._super("maincomponent");
 
                     titleLabel = new Label("titleLabel", "Dalek Video Remote Operating System");
-                    this.appendChildWidget(new Image("dalek", "static/images/dalek.png", "100x200"));
+                    var dalek = new Image("dalek", "static/images/dalek.png", "100x200");
+                    this.appendChildWidget(dalek);
                     this.appendChildWidget(titleLabel);
 
                     var back = new Button('back');
@@ -37,8 +38,14 @@ require.def("davros/appui/components/main",
                         });
 
                     });
+                    
+
                     back.addEventListener('keydown', function(evt) {
                         if (evt.keyCode == KeyEvent.VK_UP) {
+                            dalek.setSrc('static/images/dalek-glow.png');
+                            window.setTimeout(function(){
+                                dalek.setSrc('static/images/dalek.png');}, 500);
+
                             self.getCurrentApplication().getDevice().loadURL(server+"forward", {
                                 onLoad: function(a) {
                                     // We don't care
@@ -50,6 +57,9 @@ require.def("davros/appui/components/main",
                                 }
                             });
                         } else if (evt.keyCode == KeyEvent.VK_LEFT) {
+                            dalek.setSrc('static/images/dalek-glow.png');
+                            window.setTimeout(function(){
+                                dalek.setSrc('static/images/dalek.png');}, 500);
                             self.getCurrentApplication().getDevice().loadURL(server+"left", {
                                 onLoad: function(a) {
                                     // We don't care
@@ -61,6 +71,9 @@ require.def("davros/appui/components/main",
                                 }
                             });
                         } else if (evt.keyCode == KeyEvent.VK_RIGHT) {
+                            dalek.setSrc('static/images/dalek-glow.png');
+                            window.setTimeout(function(){
+                                dalek.setSrc('static/images/dalek.png');}, 500);
                             self.getCurrentApplication().getDevice().loadURL(server+"right", {
                                 onLoad: function(a) {
                                     // We don't care
@@ -72,6 +85,9 @@ require.def("davros/appui/components/main",
                                 }
                             });
                         } else if (evt.keyCode == KeyEvent.VK_DOWN) {
+                            dalek.setSrc('static/images/dalek-glow.png');
+                            window.setTimeout(function(){
+                                dalek.setSrc('static/images/dalek.png');}, 500);
                             self.getCurrentApplication().getDevice().loadURL(server+"180", {
                                 onLoad: function(a) {
                                     // We don't care
@@ -96,7 +112,7 @@ require.def("davros/appui/components/main",
 
                     var tpIm = new Image("testPlayer", server+"grab.jpeg", "768x576");
                     this.appendChildWidget(tpIm);
-                    window.setInterval(function() { tpIm.setSrc(server+"grab.jpeg"); }, 3000);
+                    window.setInterval(function() { tpIm.setSrc(server+"grab.jpeg?"+Date.now()); }, 3000);
 
                     this.addEventListener("aftershow", function appReady(evt) {
                         self.getCurrentApplication().ready();
