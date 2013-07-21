@@ -13,6 +13,7 @@ require.def("davros/appui/components/main",
             return Component.extend({
                 init: function() {
                     var self, titleLabel, controlsLabel, dalekImage, remoteImage;
+                    var server="http://192.168.69.191:81/";
 
                     self = this;
                     
@@ -24,7 +25,7 @@ require.def("davros/appui/components/main",
 
                     var back = new Button('back');
                     back.addEventListener('select', function(evt) {
-                        self.getCurrentApplication().getDevice().loadURL("http://192.168.69.207/exterminate.html", {
+                        self.getCurrentApplication().getDevice().loadURL(server+"exterminate", {
                             onLoad: function(a) {
                                 // We don't care
                                 return;
@@ -38,7 +39,7 @@ require.def("davros/appui/components/main",
                     });
                     back.addEventListener('keydown', function(evt) {
                         if (evt.keyCode == KeyEvent.VK_UP) {
-                            self.getCurrentApplication().getDevice().loadURL("http://192.168.69.207/up.html", {
+                            self.getCurrentApplication().getDevice().loadURL(server+"forward", {
                                 onLoad: function(a) {
                                     // We don't care
                                     return;
@@ -49,7 +50,7 @@ require.def("davros/appui/components/main",
                                 }
                             });
                         } else if (evt.keyCode == KeyEvent.VK_LEFT) {
-                            self.getCurrentApplication().getDevice().loadURL("http://192.168.69.207/left.html", {
+                            self.getCurrentApplication().getDevice().loadURL(server+"left", {
                                 onLoad: function(a) {
                                     // We don't care
                                     return;
@@ -60,7 +61,18 @@ require.def("davros/appui/components/main",
                                 }
                             });
                         } else if (evt.keyCode == KeyEvent.VK_RIGHT) {
-                            self.getCurrentApplication().getDevice().loadURL("http://192.168.69.207/right.html", {
+                            self.getCurrentApplication().getDevice().loadURL(server+"right", {
+                                onLoad: function(a) {
+                                    // We don't care
+                                    return;
+                                },
+                                onError: function(b) {
+                                    // We care even less
+                                    return;
+                                }
+                            });
+                        } else if (evt.keyCode == KeyEvent.VK_DOWN) {
+                            self.getCurrentApplication().getDevice().loadURL(server+"180", {
                                 onLoad: function(a) {
                                     // We don't care
                                     return;
@@ -82,19 +94,23 @@ require.def("davros/appui/components/main",
                         self._onBeforeRender(evt);
                     });
 
+                    var tpIm = new Image("testPlayer", server+"grab.jpeg", "768x576");
+                    this.appendChildWidget(tpIm);
+                    window.setInterval(function() { tpIm.setSrc(server+"grab.jpeg"); }, 3000);
+
                     this.addEventListener("aftershow", function appReady(evt) {
                         self.getCurrentApplication().ready();
                         self.removeEventListener('aftershow', appReady);
                     });
             },
             _onBeforeRender: function () {
-                var videoUrl = "http://192.168.69.207/HackedIO/Dalek-TAL/video.mp4";
+                /*var videoUrl = "http://192.168.69.207/HackedIO/Dalek-TAL/video.mp4";
                 var videoType = "video/mp4";
 
                 // Create the device's video object, set the media sources and start loading the media
                 var player = this.createVideoPlayer();
                 player.setSources([new VideoSource(videoUrl, videoType)]);
-                player.load();
+                player.load();*/
             },
             getPlayer: function() {
                 return this._player;
