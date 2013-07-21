@@ -1,0 +1,41 @@
+/*
+ *
+ * fg: 78ffd4
+ * bg: 0
+ */
+
+.component.container {
+	color: #78ffd4;
+	text-align: left;
+}
+
+.button {
+	text-align: left;
+	height: 1px;
+	font-size: 0px;
+}
+
+.button.focus {
+/*	border: 1px solid red;*/
+	height: 1px;
+}
+
+#titleLabel, #videoLabel, #controlsLabel {
+    display: block;
+    text-align: left;
+    font-family: sans-serif;
+}
+
+#titleLabel {
+    font-size: 32px;
+}
+
+#dalek {
+	float: right;
+	width: 260px;
+	height: 720px;
+	padding-left: 0px;
+	margin-left: 0px;
+	padding-right: 0px;
+	margin-right: 0px;
+}
