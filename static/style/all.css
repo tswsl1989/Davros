@@ -23,6 +23,7 @@
 #titleLabel {
     display: block;
     text-align: left;
+    padding-left: 15px;
     font-family: sans-serif;
 }
 
@@ -34,8 +35,5 @@
 	float: right;
 	width: 260px;
 	height: 720px;
-	padding-left: 0px;
-	margin-left: 0px;
-	padding-right: 0px;
-	margin-right: 0px;
+	padding-right: 150px;
 }
