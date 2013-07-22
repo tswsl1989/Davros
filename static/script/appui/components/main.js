@@ -26,6 +26,9 @@ require.def("davros/appui/components/main",
 
                     var back = new Button('back');
                     back.addEventListener('select', function(evt) {
+                        dalek.setSrc('static/images/dalek-glow.png');
+                        window.setTimeout(function(){
+                             dalek.setSrc('static/images/dalek.png');}, 500);
                         self.getCurrentApplication().getDevice().loadURL(server+"exterminate", {
                             onLoad: function(a) {
                                 // We don't care
@@ -112,7 +115,7 @@ require.def("davros/appui/components/main",
 
                     var tpIm = new Image("testPlayer", server+"grab.jpeg", "768x576");
                     this.appendChildWidget(tpIm);
-                    window.setInterval(function() { tpIm.setSrc(server+"grab.jpeg?"+Date.now()); }, 3000);
+                    window.setInterval(function() { tpIm.setSrc(server+"grab.jpeg?"+Date.now()); }, 1000);
 
                     this.addEventListener("aftershow", function appReady(evt) {
                         self.getCurrentApplication().ready();
